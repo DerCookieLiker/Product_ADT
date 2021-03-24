@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1616585578 source:c:\users\user\documents\c\workspace\projects\product_adt\product.c
+	"Product.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1616584764 c:\users\user\documents\c\workspace\projects\product_adt\product.h
+
+1616591665 source:c:\users\user\documents\c\workspace\projects\product_adt\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Product.h"
+
