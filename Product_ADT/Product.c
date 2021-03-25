@@ -23,7 +23,9 @@ PProduct Product_create(int id, char* productName, double price){
 
     return retVal;
 }
-
+PProductArr Product_createArr(){
+    return (PProductArr) malloc(sizeof(PProduct));
+}
 void Product_print(PProduct _this){
 
     printf("ID: %d\n", _this->id);
@@ -44,6 +46,9 @@ char* Product_getProductName(PProduct _this) {
 double Product_getPrice(PProduct _this){
     return _this->price;
 }
+int Product_getDataSize(){
+    return sizeof(struct Product);
+}
 
 void Product_setID(PProduct _this, int newId){
     _this->id = newId;
@@ -54,37 +59,7 @@ void Product_setProductName(PProduct _this, char* newProductName){
 void Product_setPrice(PProduct _this, double newPrice){
     _this->price = newPrice;
 }
-void Product_write(PProduct _this, const char* filename){
+void Product_add(PProductArr _this, PProduct p,int* noe){
 
-    FILE* fp;
 
-    fp = fopen(filename, "ab");
-    if(!fp){
-
-        printf("Error");
-        return;
-    }
-
-    fwrite(_this, sizeof(struct Product), 1, fp);
-    fclose(fp);
-}
-void Product_read(PProduct _this, const char* filename, int index){
-
-    FILE* fp;
-
-    int size = sizeof(struct Product);
-
-    fp = fopen(filename, "rb");
-
-    if(!fp){
-
-        printf("Error File not found");
-        return;
-    }
-
-    fseek(fp, index * size, SEEK_SET);
-    if(!fread(_this, size, 1, fp)){
-        printf("ERROR Index to big");
-    }
-    fclose(fp);
 }

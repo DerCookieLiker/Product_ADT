@@ -1,18 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Product.h"
+#include "ProductDTO.h"
 
-int main()
-{
-    PProduct apple = Product_create(0, "apple", 0.12);
-    PProduct appleCopy = Product_create(0, " ", 0);
+int main(){
+    PProduct apple[10];
+
+    for(int i = 0; i < 10; i++){
+        apple[i] = Product_create(i, "apple", i + 0.2);
+    }
 
 
-    Product_write(apple, "product.dat");
-    Product_read(appleCopy, "product.dat", 0);
-    printf("%s\n", Product_getProductName(appleCopy));
-    Product_print(appleCopy);
+    PProductDTO save = ProductDTO_create("productsArr.dat");
 
-    //Product_write(apple, "product.dat");
-    Product_delete(appleCopy);
+    ProductDAO_writeAll(save, apple, 10);
+
+    Product_print(apple[0]);
 }
