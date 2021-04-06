@@ -56,17 +56,25 @@ PProduct ProductDTO_read(PProductDTO _this, int index){
 
     return retVal;
 }
-void ProductDAO_writeAll(PProductDTO _this, PProductArr p){
+void ProductDTO_writeAll(PProductDTO _this, PProductArr array){
 
-    PProduct* array = ProductArr_getArray(p);
+    PProduct* temp = ProductArr_getArray(array);
 
-    for(int i = 0; i < ProductArr_getNoe(p); i++){
+    for(int i = 0; i < ProductArr_getNoe(array); i++){
 
-        ProductDTO_write(_this, array[i]);
+        ProductDTO_write(_this, temp[i]);
     }
 }
-PProductArr ProductDTO_readAll(PProductDTO _this, int* count){
+PProductArr ProductDTO_readAll(PProductDTO _this, int count){
 
-    //PProductArr retVal = PProductArr_create();
-    return NULL;
+    PProductArr retVal = ProductArr_create();
+
+    for(int i = 0; i < count; i++){
+
+        ProductArr_add(retVal, ProductDTO_read(_this, i));
+    }
+    return retVal;
+}
+void ProductDTO_delete(PProductDTO _this){
+    free(_this);
 }

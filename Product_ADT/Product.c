@@ -97,3 +97,8 @@ PProduct* ProductArr_getArray(PProductArr _this){
 int ProductArr_getNoe(PProductArr _this){
     return _this->noe;
 }
+void ProductArr_delete(PProductArr _this){
+
+    free(_this->array);
+    free(_this);
+}
