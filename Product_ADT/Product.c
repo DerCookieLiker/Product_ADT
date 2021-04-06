@@ -12,7 +12,11 @@ struct Product{
     double price;
 
 };
+struct ProductArr{
 
+    PProduct *array;
+    int noe;
+};
 PProduct Product_create(int id, char* productName, double price){
 
     PProduct retVal = (PProduct) malloc(sizeof(struct Product));
@@ -23,8 +27,13 @@ PProduct Product_create(int id, char* productName, double price){
 
     return retVal;
 }
-PProductArr Product_createArr(){
-    return (PProductArr) malloc(sizeof(PProduct));
+PProductArr ProductArr_create(){
+    PProductArr retVal = (PProductArr) malloc(sizeof(struct ProductArr));
+
+    retVal->array = NULL;
+    retVal->noe = 0;
+
+    return retVal;
 }
 void Product_print(PProduct _this){
 
@@ -59,7 +68,32 @@ void Product_setProductName(PProduct _this, char* newProductName){
 void Product_setPrice(PProduct _this, double newPrice){
     _this->price = newPrice;
 }
-void Product_add(PProductArr _this, PProduct p,int* noe){
 
+void ProductArr_add(PProductArr _this, PProduct p){
 
+    if(!_this->array){
+        _this->array = (PProduct *) malloc(sizeof(PProduct));
+    }
+    _this->noe += 1;
+    PProduct* newArray = (PProduct*) realloc(_this->array, (_this->noe) * sizeof(PProduct));
+
+    newArray[_this->noe - 1] = p;
+
+    _this->array = newArray;
+}
+void ProductArr_print(PProductArr _this){
+
+    int noe = _this->noe;
+
+    for(int i = 0; i < noe; i++){
+
+        Product_print(_this->array[i]);
+        printf("\n");
+    }
+}
+PProduct* ProductArr_getArray(PProductArr _this){
+    return _this->array;
+}
+int ProductArr_getNoe(PProductArr _this){
+    return _this->noe;
 }

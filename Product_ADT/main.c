@@ -4,16 +4,17 @@
 #include "ProductDTO.h"
 
 int main(){
-    PProduct apple[10];
 
-    for(int i = 0; i < 10; i++){
-        apple[i] = Product_create(i, "apple", i + 0.2);
-    }
+    PProductArr arr = ProductArr_create();
 
+    ProductArr_add(arr, Product_create(0, "apple", 2));
+    ProductArr_add(arr, Product_create(2, "apple XR", 100));
+    ProductArr_add(arr, Product_create(3, "orange", 2.2));
+    ProductArr_add(arr, Product_create(4, "TV", 200));
 
-    PProductDTO save = ProductDTO_create("productsArr.dat");
+    ProductArr_print(arr);
 
-    ProductDAO_writeAll(save, apple, 10);
+    PProductDTO saveFile = ProductDTO_create("productArray.dat");
 
-    Product_print(apple[0]);
+    ProductDAO_writeAll(saveFile, arr);
 }

@@ -1,10 +1,10 @@
 #pragma once
 
 typedef struct Product* PProduct;
-typedef struct Product** PProductArr;
+typedef struct ProductArr* PProductArr;
 
 PProduct Product_create(int id, char* productName, double price);
-PProductArr Product_createArr();
+PProductArr ProductArr_create();
 
 void Product_print(PProduct _this);
 void Product_delete(PProduct _this);
@@ -19,5 +19,11 @@ void Product_setPrice(PProduct _this, double newPrice);
 int Product_getDataSize();
 
 void Product_read(PProduct _this, const char* filename, int index);
-void Product_add(PProductArr _this, int *noe);
+
+void ProductArr_add(PProductArr _this, PProduct p);
+void ProductArr_print(PProductArr _this);
+void ProductArr_delete(PProductArr _this);
+
+PProduct* ProductArr_getArray(PProductArr _this);
+int ProductArr_getNoe(PProductArr _this);
 

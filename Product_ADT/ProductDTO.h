@@ -2,12 +2,12 @@
 
 typedef struct ProductDTO* PProductDTO;
 typedef struct Product* PProduct;
-typedef struct Product** PProductArr;
+typedef struct ProductArr* PProductArr;
 
 PProductDTO ProductDTO_create(const char* filename);
 
 PProduct ProductDTO_read(PProductDTO _this, int index);
 void ProductDTO_write(PProductDTO _this, PProduct p);
 
-void ProductDTO_writeAll(PProductDTO _this, PProductArr products, int count);
+void ProductDTO_writeAll(PProductDTO _this, PProductArr p);
 PProductArr ProductDTO_readAll(PProductDTO _this,  int *count);

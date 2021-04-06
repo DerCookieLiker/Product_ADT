@@ -56,14 +56,17 @@ PProduct ProductDTO_read(PProductDTO _this, int index){
 
     return retVal;
 }
-void ProductDAO_writeAll(PProductDTO _this, PProductArr p, int count){
+void ProductDAO_writeAll(PProductDTO _this, PProductArr p){
 
-    for(int i = 0; i < count; i++){
+    PProduct* array = ProductArr_getArray(p);
 
-        ProductDTO_write(_this, p[i]);
+    for(int i = 0; i < ProductArr_getNoe(p); i++){
+
+        ProductDTO_write(_this, array[i]);
     }
 }
 PProductArr ProductDTO_readAll(PProductDTO _this, int* count){
 
-    PProductArr retVal = PProductArr_create();
+    //PProductArr retVal = PProductArr_create();
+    return NULL;
 }
