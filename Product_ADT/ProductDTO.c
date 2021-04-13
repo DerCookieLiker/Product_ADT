@@ -50,7 +50,7 @@ PProduct ProductDTO_read(PProductDTO _this, int index){
 
     fseek(fp, index * size, SEEK_SET);
     if(!fread(retVal, size, 1, fp)){
-        printf("ERROR Index to big");
+        return NULL;
     }
     fclose(fp);
 
@@ -65,16 +65,51 @@ void ProductDTO_writeAll(PProductDTO _this, PProductArr array){
         ProductDTO_write(_this, temp[i]);
     }
 }
-PProductArr ProductDTO_readAll(PProductDTO _this, int count){
+PProductArr ProductDTO_readAll(PProductDTO _this){
 
     PProductArr retVal = ProductArr_create();
+    PProduct* temp = ProductArr_getArray(retVal);
 
-    for(int i = 0; i < count; i++){
+    int count = 0;
+    do{
 
-        ProductArr_add(retVal, ProductDTO_read(_this, i));
-    }
+        ProductArr_add(retVal, ProductDTO_read(_this, count));
+        temp = ProductArr_getArray(retVal);
+        count++;
+    }while(temp[count - 1]);
+
     return retVal;
 }
 void ProductDTO_delete(PProductDTO _this){
     free(_this);
 }
+void ProductDTO_update(PProductDTO _this, PProduct p, int pos){
+
+    PProductArr array = ProductArr_create();
+    PProduct* temp;
+    array = ProductDTO_readAll(_this);
+    temp = ProductArr_getArray(array);
+
+    temp[pos] = p;
+
+    fopen(_this->filename, "wb");
+    //I cant use remove(_this->filename); and I don't know why so I delete the content of the File
+
+    ProductDTO_writeAll(_this, array);
+    ProductArr_delete(array);
+    free(temp);
+}
+void ProductDTO_remove(PProductDTO _this, int pos){
+
+    PProductArr array = ProductArr_create();
+    array = ProductDTO_readAll(_this);
+
+    ProductArr_remove(array, pos);
+
+    fopen(_this->filename, "wb");
+    //I cant use remove(_this->filename); and I don't know why so I delete the content of the File
+
+    ProductDTO_writeAll(_this, array);
+    ProductArr_delete(array);
+}
+

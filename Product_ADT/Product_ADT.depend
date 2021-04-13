@@ -12,13 +12,13 @@
 	<stdlib.h>
 	"Product.h"
 
-1617691446 source:c:\users\strobl\documents\github\product_adt\product_adt\main.c
+1618298440 source:c:\users\strobl\documents\github\product_adt\product_adt\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Product.h"
 	"ProductDTO.h"
 
-1617691291 c:\users\strobl\documents\github\product_adt\product_adt\product.h
+1618297699 c:\users\strobl\documents\github\product_adt\product_adt\product.h
 
 1616665795 source:c:\users\user\documents\github\product_adt\product_adt\main.c
 	<stdio.h>
@@ -43,15 +43,15 @@
 
 1616665836 c:\users\user\documents\github\product_adt\product_adt\productdto.h
 
-1617691315 c:\users\strobl\documents\github\product_adt\product_adt\productdto.h
+1617896086 c:\users\strobl\documents\github\product_adt\product_adt\productdto.h
 
-1617690254 source:c:\users\strobl\documents\github\product_adt\product_adt\product.c
+1618298766 source:c:\users\strobl\documents\github\product_adt\product_adt\product.c
 	"Product.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1617691345 source:c:\users\strobl\documents\github\product_adt\product_adt\productdto.c
+1618297680 source:c:\users\strobl\documents\github\product_adt\product_adt\productdto.c
 	"ProductDTO.h"
 	"Product.h"
 	<stdlib.h>

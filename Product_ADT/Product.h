@@ -17,6 +17,7 @@ void Product_setID(PProduct _this, int newId);
 void Product_setProductName(PProduct _this, char* newProductName);
 void Product_setPrice(PProduct _this, double newPrice);
 int Product_getDataSize();
+char* Product_toString(PProduct _this);
 
 void Product_read(PProduct _this, const char* filename, int index);
 
@@ -26,4 +27,5 @@ void ProductArr_delete(PProductArr _this);
 
 PProduct* ProductArr_getArray(PProductArr _this);
 int ProductArr_getNoe(PProductArr _this);
+void ProductArr_remove(PProductArr _this, int pos);
 

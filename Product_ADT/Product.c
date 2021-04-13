@@ -11,6 +11,8 @@ struct Product{
     char productName[PRODUCT_MAX_STRING];
     double price;
 
+    char* productString;
+
 };
 struct ProductArr{
 
@@ -24,7 +26,7 @@ PProduct Product_create(int id, char* productName, double price){
     retVal->id = id;
     strcpy(retVal->productName, productName);
     retVal->price = price;
-
+    retVal->productString = (char*) malloc(80 * sizeof(char));
     return retVal;
 }
 PProductArr ProductArr_create(){
@@ -36,7 +38,7 @@ PProductArr ProductArr_create(){
     return retVal;
 }
 void Product_print(PProduct _this){
-
+    if(!_this) return;
     printf("ID: %d\n", _this->id);
     printf("ProductName: %s\n", _this->productName);
     printf("Price: %.2lf", _this->price);
@@ -57,6 +59,17 @@ double Product_getPrice(PProduct _this){
 }
 int Product_getDataSize(){
     return sizeof(struct Product);
+}
+
+char* Product_toString(PProduct _this){
+    int valid;
+
+    valid = sprintf(_this->productString, "ID: %d | Name: %s | Price: %.2lf", _this->id, _this->productName, _this->price);
+
+    if(!valid){
+        _this->productString = "Error";
+    }
+    return _this->productString;
 }
 
 void Product_setID(PProduct _this, int newId){
@@ -80,6 +93,19 @@ void ProductArr_add(PProductArr _this, PProduct p){
     newArray[_this->noe - 1] = p;
 
     _this->array = newArray;
+}
+void ProductArr_remove(PProductArr _this, int pos){
+
+    if(pos < 0 || pos > _this->noe) return;
+    PProduct* temp = ProductArr_getArray(_this);
+    int i;
+    for(i = pos; i < ProductArr_getNoe(_this) - 1; i++){
+        temp[i] = temp[i + 1];
+    }
+    _this->noe -= 1;
+    Product_delete(temp[i + 1]);
+    temp = (PProduct*) realloc(temp, _this->noe * sizeof(PProduct));
+
 }
 void ProductArr_print(PProductArr _this){
 

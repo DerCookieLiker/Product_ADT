@@ -10,6 +10,8 @@ PProduct ProductDTO_read(PProductDTO _this, int index);
 void ProductDTO_write(PProductDTO _this, PProduct p);
 
 void ProductDTO_writeAll(PProductDTO _this, PProductArr array);
-PProductArr ProductDTO_readAll(PProductDTO _this, int count);
+PProductArr ProductDTO_readAll(PProductDTO _this);
 
 void ProductDTO_delete(PProductDTO _this);
+void ProductDTO_update(PProductDTO _this, PProduct p, int pos);
+void ProductDTO_remove(PProductDTO _this, int pos);
