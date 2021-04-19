@@ -20,7 +20,7 @@ PProductCVS ProductCVS_create(const char* filename, char sep){
 }
 void ProductCVS_write(PProductCVS _this, PProduct product){
 
-    FILE *fp = fopen(_this->filename, "a");
+    FILE *fp = fopen(_this->filename, "at");
 
     if(!fp){
         printf("Cannot Access to the file: %s", _this->filename);
