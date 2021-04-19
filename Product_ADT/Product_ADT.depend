@@ -20,7 +20,7 @@
 
 1618297699 c:\users\strobl\documents\github\product_adt\product_adt\product.h
 
-1618817243 source:c:\users\user\documents\github\product_adt\product_adt\main.c
+1618817265 source:c:\users\user\documents\github\product_adt\product_adt\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Product.h"
@@ -35,7 +35,7 @@
 	<stdlib.h>
 	<string.h>
 
-1618814940 source:c:\users\user\documents\github\product_adt\product_adt\productdto.c
+1618817314 source:c:\users\user\documents\github\product_adt\product_adt\productdto.c
 	"ProductDTO.h"
 	"Product.h"
 	<stdlib.h>

@@ -26,7 +26,7 @@ void ProductCVS_write(PProductCVS _this, PProduct product){
         printf("Cannot Access to the file: %s", _this->filename);
     }
 
-    fprintf(fp, "%s\n", Product_toString(product, _this->sep));
+    fprintf(fp, "%d %c %s %c %.2lf\n", Product_getID(product), _this->sep, Product_getProductName(product), _this->sep, Product_getPrice(product));
 
     fclose(fp);
 }
