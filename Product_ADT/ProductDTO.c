@@ -68,15 +68,24 @@ void ProductDTO_writeAll(PProductDTO _this, PProductArr array){
 PProductArr ProductDTO_readAll(PProductDTO _this){
 
     PProductArr retVal = ProductArr_create();
-    PProduct* temp = ProductArr_getArray(retVal);
 
-    int count = 0;
-    do{
+    FILE *fp = fopen(_this->filename, "rb");
 
-        ProductArr_add(retVal, ProductDTO_read(_this, count));
-        temp = ProductArr_getArray(retVal);
-        count++;
-    }while(temp[count - 1]);
+    if(!fp){
+        printf("Cannot access to the file %s", _this->filename);
+        return NULL;
+    }
+
+    fseek(fp, 0, SEEK_END);
+
+    int count = ftell(fp) / Product_getDataSize();
+
+    fclose(fp);
+
+    for(int i = 0; i < count; i++){
+
+        ProductArr_add(retVal, ProductDTO_read(_this, i));
+    }
 
     return retVal;
 }
