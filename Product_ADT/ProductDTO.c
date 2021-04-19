@@ -58,11 +58,9 @@ PProduct ProductDTO_read(PProductDTO _this, int index){
 }
 void ProductDTO_writeAll(PProductDTO _this, PProductArr array){
 
-    PProduct* temp = ProductArr_getArray(array);
-
     for(int i = 0; i < ProductArr_getNoe(array); i++){
 
-        ProductDTO_write(_this, temp[i]);
+        ProductDTO_write(_this, ProductArr_getProduct(array, i));
     }
 }
 PProductArr ProductDTO_readAll(PProductDTO _this){

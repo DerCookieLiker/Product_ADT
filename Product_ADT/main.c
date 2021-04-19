@@ -2,22 +2,18 @@
 #include <stdlib.h>
 #include "Product.h"
 #include "ProductDTO.h"
+#include "ProductCSV.h"
 
 void ProductManager();
 int main(){
 
-    remove("productArray.dat");
-
     ProductManager();
-
-
-
-
 }
 void ProductManager(){
 
     PProductArr arr = ProductArr_create();
     PProductDTO saveFile = ProductDTO_create("productArray.dat");
+    remove("productArray.dat");
     PProductArr copyArray = ProductArr_create();
 
     ProductArr_add(arr, Product_create(0, "milk", 1.5));
@@ -48,10 +44,19 @@ void ProductManager(){
     PProduct newObj = Product_create(0, " ", 0);
     newObj = ProductDTO_read(saveFile, 1);
     Product_print(newObj);
-    str = Product_toString(newObj);
+    str = Product_toString(newObj, '|');
     puts(str);
     printf("\n\n");
 
+    printf("\n=============\nProductCVS");
+    const char* filename = "productCVS.dat";
+    remove(filename);
+    PProductCVS cvs = ProductCVS_create(filename, '|');
+
+    ProductCVS_writeAll(cvs, arr);
+    ProductCVS_write(cvs, Product_create(4, "Keyboard", 119.99));
+
+    ProductCVS_delete(cvs);
     Product_delete(newObj);
     ProductArr_delete(arr);
     ProductArr_delete(newArray);

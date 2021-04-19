@@ -20,21 +20,22 @@
 
 1618297699 c:\users\strobl\documents\github\product_adt\product_adt\product.h
 
-1618814624 source:c:\users\user\documents\github\product_adt\product_adt\main.c
+1618817243 source:c:\users\user\documents\github\product_adt\product_adt\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Product.h"
 	"ProductDTO.h"
+	"ProductCSV.h"
 
-1618814624 c:\users\user\documents\github\product_adt\product_adt\product.h
+1618816530 c:\users\user\documents\github\product_adt\product_adt\product.h
 
-1618814624 source:c:\users\user\documents\github\product_adt\product_adt\product.c
+1618816487 source:c:\users\user\documents\github\product_adt\product_adt\product.c
 	"Product.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1618814851 source:c:\users\user\documents\github\product_adt\product_adt\productdto.c
+1618814940 source:c:\users\user\documents\github\product_adt\product_adt\productdto.c
 	"ProductDTO.h"
 	"Product.h"
 	<stdlib.h>
@@ -57,4 +58,13 @@
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
+
+1618817031 c:\users\user\documents\github\product_adt\product_adt\productcsv.h
+	"Product.h"
+
+1618817038 source:c:\users\user\documents\github\product_adt\product_adt\productcsv.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ProductCSV.h"
 

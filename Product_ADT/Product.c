@@ -61,10 +61,10 @@ int Product_getDataSize(){
     return sizeof(struct Product);
 }
 
-char* Product_toString(PProduct _this){
+char* Product_toString(PProduct _this, char sep){
     int valid;
 
-    valid = sprintf(_this->productString, "ID: %d | Name: %s | Price: %.2lf", _this->id, _this->productName, _this->price);
+    valid = sprintf(_this->productString, "ID: %d %c Name: %s %c Price: %.2lf", _this->id, sep,_this->productName, sep,_this->price);
 
     if(!valid){
         _this->productString = "Error";
@@ -127,4 +127,10 @@ void ProductArr_delete(PProductArr _this){
 
     free(_this->array);
     free(_this);
+}
+
+PProduct ProductArr_getProduct(PProductArr _this, int noe){
+
+    if(noe < 0 || noe > _this->noe || !_this->array[noe]) return NULL;
+    return _this->array[noe];
 }
